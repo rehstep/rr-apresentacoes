@@ -29,3 +29,29 @@ function loadRandomProjects(container, count) {
     }
 }
 // Chame a função para popular as trilhas dinamicamente
+
+document.addEventListener('DOMContentLoaded', () => {
+    const follower = document.querySelector('.mouse-follower');
+
+    window.addEventListener('mousemove', (e) => {
+        // Torna visível no primeiro movimento
+        if (follower.style.opacity === '0' || follower.style.opacity === '') {
+            follower.style.opacity = '1';
+        }
+
+        // Move o elemento usando hardware acceleration (transform)
+        // O cálculo de x e y posiciona o centro do blur no cursor
+        const x = e.clientX;
+        const y = e.clientY;
+
+        follower.animate({
+            left: `${x}px`,
+            top: `${y}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+
+    // Opcional: Esconde o glow quando o mouse sai da janela
+    document.addEventListener('mouseleave', () => {
+        follower.style.opacity = '0';
+    });
+});

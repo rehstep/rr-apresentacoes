@@ -152,6 +152,20 @@ h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5
     font-size: 1.1rem;
 }
 
+.mouse-follower {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(157, 80, 187, 0.3) 0%, rgba(157, 80, 187, 0) 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none; /* Não interfere nos cliques */
+    z-index: 9998; /* Fica acima do fundo, mas abaixo do conteúdo principal */
+    transform: translate(-50%, -50%); /* Centraliza no mouse */
+    transition: transform 0.1s ease-out, opacity 0.3s ease;
+    opacity: 0; /* Começa invisível para aparecer só quando o mouse mover */
+}
+
 /* Botão Estilo Glitch/Futurista */
 .btn-glitch {
     position: relative;
