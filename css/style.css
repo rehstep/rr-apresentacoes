@@ -220,6 +220,30 @@ h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5
 .legal { text-align: right; font-size: 0.8rem; color: #444; }
 .highlight { color: var(--accent); opacity: 0.8; }
 
+/* Trilho em direção oposta */
+.track-reverse {
+    animation: scroll-reverse 50s linear infinite !important;
+    margin-top: 20px;
+}
+
+@keyframes scroll-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+}
+
+/* Otimização de performance para muitos vídeos */
+.video-card video {
+    width: 100%;
+    display: block;
+    filter: brightness(0.8); /* Foco no minimalismo */
+    transition: 0.5s;
+}
+
+.video-card:hover video {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}
+
 /* Responsivo */
 @media (max-width: 900px) {
     .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
