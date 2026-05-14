@@ -226,6 +226,116 @@ h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5
     margin-top: 20px;
 }
 
+/* --- Estilo do Novo Botão "Iniciar Projeto" --- */
+.nav-cta-premium {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 20px rgba(157, 80, 187, 0.2);
+}
+
+.nav-cta-premium:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(157, 80, 187, 0.4);
+    background: #af66cc; /* Tom levemente mais claro no hover */
+}
+
+.cta-icon {
+    transition: transform 0.3s ease;
+}
+
+.nav-cta-premium:hover .cta-icon {
+    transform: translateX(5px);
+}
+
+/* Efeito de brilho passando pelo botão */
+.nav-cta-premium::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(30deg);
+    transition: none;
+}
+
+.nav-cta-premium:hover::after {
+    left: 150%;
+    transition: all 0.7s ease-in-out;
+}
+
+/* --- Refinamento da Grade de Stats --- */
+.hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 60px auto 0;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+}
+
+.stat-item {
+    text-align: center;
+    position: relative;
+}
+
+/* Divisor entre os itens */
+.stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsividade para Mobile */
+@media (max-width: 768px) {
+    .hero-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    .stat-item:nth-child(2)::after { display: none; }
+}
+
 @keyframes scroll-reverse {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
