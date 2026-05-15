@@ -1,246 +1,83 @@
+/* --- 1. CONFIGURAÇÕES E VARIÁVEIS --- */
 :root {
     --bg: #050505;
     --accent: #9d50bb;
+    --accent-light: #af66cc;
     --glass: rgba(255, 255, 255, 0.03);
     --text-dim: #a0a0a0;
+    --border: rgba(255, 255, 255, 0.05);
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-title: 'Space Grotesk', sans-serif;
 }
 
-/* Reset e Scrollbar */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: var(--bg); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+/* --- 2. RESET E GERAIS --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body { 
+    background: var(--bg); 
+    color: #fff; 
+    font-family: var(--font-main); 
+    overflow-x: hidden; 
+    line-height: 1.6;
+}
 
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; border: 2px solid var(--bg); }
-
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-/* Navbar */
-.navbar { 
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 5%; position: fixed; width: 100%; top: 0; z-index: 1000; 
-    backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; }
-.logo span { color: var(--accent); }
-.nav-cta { color: #fff; text-decoration: none; border: 1px solid var(--accent); padding: 10px 20px; border-radius: 50px; font-size: 0.8rem; transition: 0.3s; }
-
-/* Hero */
-.hero-minimal { padding: 160px 0 80px; text-align: center; }
-.badge { background: var(--glass); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 100px; font-size: 0.7rem; letter-spacing: 2px; }
-h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin: 30px 0; line-height: 1.1; }
-.text-gradient { background: linear-gradient(90deg, #9d50bb, #6e48aa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.hero-stats { display: flex; justify-content: center; gap: 40px; margin-top: 40px; }
-.stat-item strong { display: block; font-size: 1.5rem; color: var(--accent); }
-
-/* Video Marquee */
-.marquee-section { padding: 40px 0; background: #080808; }
-.marquee-wrapper { overflow: hidden; }
-.video-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
-.video-grid { display: flex; gap: 20px; padding-right: 20px; }
-.video-card { width: 380px; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-.video-card video { width: 100%; display: block; }
-@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-/* Masonry Testimonials */
-.testimonials-advanced { padding: 100px 0; }
-.section-header { text-align: center; margin-bottom: 60px; }
-.testimonial-masonry {
-    column-count: 3;
-    column-gap: 20px;
+::-webkit-scrollbar-thumb { 
+    background: var(--accent); 
+    border-radius: 10px; 
+    border: 2px solid var(--bg); 
 }
 
-.t-card {
-    break-inside: avoid;
-    margin-bottom: 20px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 30px;
-    border-radius: 20px;
-    transition: 0.4s;
-}
-.t-card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(157, 80, 187, 0.05); }
-
-.t-card.premium { border-color: rgba(157, 80, 187, 0.3); background: linear-gradient(145deg, rgba(157, 80, 187, 0.05), transparent); }
-.t-card.highlight { border-left: 4px solid var(--accent); }
-
-.quote-icon { font-family: 'serif'; font-size: 4rem; color: var(--accent); opacity: 0.2; line-height: 0; margin-bottom: 10px; }
-.t-card p { font-size: 1rem; color: #ccc; margin-bottom: 20px; line-height: 1.6; }
-.t-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; color: #fff; text-transform: uppercase; }
-.t-card h4 small { display: block; color: var(--accent); font-size: 0.7rem; }
-
-/* Footer Moderno e Impactante */
-.footer-impact {
-    padding: 120px 0 40px;
-    background: linear-gradient(to bottom, #050505, #000);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    position: relative;
-    overflow: hidden;
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 24px; 
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 80px;
-    align-items: center;
-    margin-bottom: 80px;
-}
-
-/* Foto e Indicador Online */
-.profile-wrapper {
-    position: relative;
-    width: fit-content;
-    margin-bottom: 30px;
-}
-
-.profile-img {
-    width: 140px;
-    height: 140px;
-    border-radius: 30px; /* Estilo mais moderno que o círculo perfeito */
-    object-fit: cover;
-    filter: grayscale(40%);
-    transition: 0.5s;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.profile-wrapper:hover .profile-img {
-    filter: grayscale(0%);
-    transform: scale(1.05) rotate(-2deg);
-    border-color: var(--accent);
-}
-
-.online-indicator {
-    position: absolute;
-    bottom: -10px;
-    right: -20px;
-    background: #000;
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.7rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #fff;
-}
-
-.blink {
-    width: 8px;
-    height: 8px;
-    background: #2ecc71;
-    border-radius: 50%;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
-}
-
-/* Tipografia */
-.footer-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 3.5rem;
-    line-height: 1;
-    margin-bottom: 20px;
-}
-
-.footer-description {
-    color: var(--text-dim);
-    max-width: 450px;
-    font-size: 1.1rem;
-}
-
-.mouse-follower {
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(157, 80, 187, 0.3) 0%, rgba(157, 80, 187, 0) 70%);
-    border-radius: 50%;
-    filter: blur(60px);
-    pointer-events: none; /* Não interfere nos cliques */
-    z-index: 9998; /* Fica acima do fundo, mas abaixo do conteúdo principal */
-    transform: translate(-50%, -50%); /* Centraliza no mouse */
-    transition: transform 0.1s ease-out, opacity 0.3s ease;
-    opacity: 0; /* Começa invisível para aparecer só quando o mouse mover */
-}
-
-/* Botão Estilo Glitch/Futurista */
-.btn-glitch {
-    position: relative;
+/* --- 3. COMPONENTES REUTILIZÁVEIS --- */
+.badge { 
+    background: var(--glass); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    padding: 8px 16px; 
+    border-radius: 100px; 
+    font-size: 0.7rem; 
+    letter-spacing: 2px; 
     display: inline-block;
-    padding: 25px 50px;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: 0.3s;
 }
 
-.btn-glitch:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(157, 80, 187, 0.3);
+.text-gradient { 
+    background: linear-gradient(90deg, #9d50bb, #6e48aa); 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
 }
 
-.btn-shimmer {
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    animation: shimmer 3s infinite;
+/* --- 4. NAVEGAÇÃO --- */
+.navbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 5%; 
+    position: fixed; 
+    width: 100%; 
+    top: 0; 
+    z-index: 1000; 
+    backdrop-filter: blur(15px); 
+    border-bottom: 1px solid var(--border);
 }
 
-@keyframes shimmer {
-    100% { left: 100%; }
+.logo { 
+    font-family: var(--font-title); 
+    font-weight: 700; 
+    font-size: 1.2rem; 
 }
 
-/* Footer Bottom */
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
+.logo span { color: var(--accent); }
 
-.logo-faded {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 4rem;
-    font-weight: 700;
-    opacity: 0.05; /* Efeito de marca d'água no fundo */
-    user-select: none;
-}
-
-.social-links {
-    margin-top: 40px;
-    display: flex;
-    gap: 20px;
-}
-
-.social-item {
-    color: #666;
-    text-decoration: none;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
-
-.social-item:hover { color: var(--accent); }
-
-.legal { text-align: right; font-size: 0.8rem; color: #444; }
-.highlight { color: var(--accent); opacity: 0.8; }
-
-/* Trilho em direção oposta */
-.track-reverse {
-    animation: scroll-reverse 50s linear infinite !important;
-    margin-top: 20px;
-}
-
-/* --- Estilo do Novo Botão "Iniciar Projeto" --- */
 .nav-cta-premium {
     position: relative;
     display: flex;
@@ -262,33 +99,16 @@ h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5
 .nav-cta-premium:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(157, 80, 187, 0.4);
-    background: #af66cc; /* Tom levemente mais claro no hover */
+    background: var(--accent-light); 
 }
 
-.cta-icon {
-    transition: transform 0.3s ease;
-}
-
-.nav-cta-premium:hover .cta-icon {
-    transform: translateX(5px);
-}
-
-/* Efeito de brilho passando pelo botão */
 .nav-cta-premium::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-    );
+    top: -50%; left: -100%;
+    width: 50%; height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
     transform: rotate(30deg);
-    transition: none;
 }
 
 .nav-cta-premium:hover::after {
@@ -296,7 +116,16 @@ h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5
     transition: all 0.7s ease-in-out;
 }
 
-/* --- Refinamento da Grade de Stats --- */
+/* --- 5. HERO SECTION --- */
+.hero-minimal { padding: 160px 0 80px; text-align: center; }
+
+h1 { 
+    font-family: var(--font-title); 
+    font-size: clamp(2.5rem, 8vw, 4.5rem); 
+    margin: 30px 0; 
+    line-height: 1.1; 
+}
+
 .hero-stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -305,29 +134,23 @@ h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5
     margin: 60px auto 0;
     padding: 30px;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
     border-radius: 24px;
     backdrop-filter: blur(10px);
 }
 
-.stat-item {
-    text-align: center;
-    position: relative;
-}
+.stat-item { text-align: center; position: relative; }
 
-/* Divisor entre os itens */
 .stat-item:not(:last-child)::after {
     content: '';
     position: absolute;
-    right: -10px;
-    top: 20%;
-    height: 60%;
-    width: 1px;
+    right: -10px; top: 20%;
+    height: 60%; width: 1px;
     background: rgba(255, 255, 255, 0.1);
 }
 
 .stat-value {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--font-title);
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--accent);
@@ -341,25 +164,25 @@ h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5
     letter-spacing: 1px;
 }
 
-/* Responsividade para Mobile */
-@media (max-width: 768px) {
-    .hero-stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px;
-    }
-    .stat-item:nth-child(2)::after { display: none; }
+/* --- 6. MARQUEE (VÍDEOS) --- */
+.marquee-section { padding: 40px 0; background: #080808; }
+.marquee-wrapper { overflow: hidden; }
+.video-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
+.track-reverse { animation: scroll-reverse 50s linear infinite; margin-top: 20px; }
+
+.video-grid { display: flex; gap: 20px; padding-right: 20px; }
+.video-card { 
+    width: 280px; 
+    border-radius: 12px;
+    overflow: hidden; 
+    border: 1px solid var(--border); 
+    flex-shrink: 0;     
 }
 
-@keyframes scroll-reverse {
-    0% { transform: translateX(-50%); }
-    100% { transform: translateX(0); }
-}
-
-/* Otimização de performance para muitos vídeos */
 .video-card video {
     width: 100%;
     display: block;
-    filter: brightness(0.8); /* Foco no minimalismo */
+    filter: brightness(0.8);
     transition: 0.5s;
 }
 
@@ -368,14 +191,206 @@ h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5
     transform: scale(1.02);
 }
 
-/* Responsivo */
+/* --- 7. DEPOIMENTOS (MASONRY) --- */
+.testimonials-advanced { padding: 100px 0; }
+.section-header { text-align: center; margin-bottom: 60px; }
+
+.testimonial-masonry {
+    column-count: 3;
+    column-gap: 20px;
+}
+
+.t-card {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.t-card:hover { 
+    transform: translateY(-5px); 
+    border-color: var(--accent); 
+    background: rgba(157, 80, 187, 0.05); 
+}
+
+.t-card.premium { 
+    border-color: rgba(157, 80, 187, 0.3); 
+    background: linear-gradient(145deg, rgba(157, 80, 187, 0.05), transparent); 
+}
+
+.t-card.highlight { border-left: 4px solid var(--accent); }
+
+.quote-icon { 
+    font-family: serif; 
+    font-size: 4rem; 
+    color: var(--accent); 
+    opacity: 0.2; 
+    line-height: 0; 
+}
+
+.t-card p { font-size: 1rem; color: #ccc; margin-bottom: 20px; }
+.t-card h4 { font-family: var(--font-title); font-size: 0.9rem; text-transform: uppercase; }
+.t-card h4 small { display: block; color: var(--accent); font-size: 0.7rem; }
+
+/* --- 8. FOOTER --- */
+.footer-impact {
+    padding: 120px 0 40px;
+    background: linear-gradient(to bottom, #050505, #000);
+    border-top: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.profile-wrapper { position: relative; width: fit-content; margin-bottom: 30px; }
+
+.profile-img {
+    width: 140px; height: 140px;
+    border-radius: 30px; 
+    object-fit: cover;
+    filter: grayscale(40%);
+    transition: 0.5s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-wrapper:hover .profile-img {
+    filter: grayscale(0%);
+    transform: scale(1.05) rotate(-2deg);
+    border-color: var(--accent);
+}
+
+.online-indicator {
+    position: absolute;
+    bottom: -10px; right: -20px;
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-title { font-family: var(--font-title); font-size: 3.5rem; line-height: 1; margin-bottom: 20px; }
+.footer-description { color: var(--text-dim); max-width: 450px; font-size: 1.1rem; }
+
+.btn-glitch {
+    position: relative;
+    display: inline-block;
+    padding: 25px 50px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.btn-glitch:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(157, 80, 187, 0.3);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+}
+
+.logo-faded {
+    font-family: var(--font-title);
+    font-size: 4rem;
+    font-weight: 700;
+    opacity: 0.05; 
+    user-select: none;
+}
+
+.legal { text-align: right; font-size: 0.8rem; color: #444; }
+.highlight { color: var(--accent); opacity: 0.8; }
+
+/* --- 9. EFEITOS ESPECIAIS --- */
+.mouse-follower {
+    position: fixed;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(157, 80, 187, 0.3) 0%, rgba(157, 80, 187, 0) 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none; 
+    z-index: 9998; 
+    transform: translate(-50%, -50%); 
+    transition: transform 0.1s ease-out, opacity 0.3s ease;
+    opacity: 0; 
+}
+
+.blink {
+    width: 8px; height: 8px;
+    background: #2ecc71;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+/* --- 10. ANIMAÇÕES --- */
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes scroll-reverse { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+
+/* --- 11. RESPONSIVIDADE --- */
 @media (max-width: 900px) {
     .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
     .footer-bio, .footer-description { margin: 0 auto; }
     .profile-wrapper { margin: 0 auto 30px; }
     .footer-bottom { flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+    .testimonial-masonry { column-count: 2; }
+    .footer-title { font-size: 2.5rem; }
 }
 
-/* Mobile */
-@media (max-width: 900px) { .testimonial-masonry { column-count: 2; } }
-@media (max-width: 600px) { .testimonial-masonry { column-count: 1; } }
+@media (max-width: 768px) {
+    .hero-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .stat-item:nth-child(2)::after { display: none; }
+}
+
+@media (max-width: 600px) {
+    /* Ajuste de Títulos para não quebrarem o layout */
+    h1 {
+        font-size: 2.2rem;
+        margin: 20px 0;
+    }
+
+    /* Redimensionamento dos Botões Premium */
+    .nav-cta-premium, .btn-glitch {
+        padding: 12px 20px; /* Redução de preenchimento */
+        font-size: 0.75rem;   /* Fonte levemente menor */
+        border-radius: 10px;
+        gap: 8px;
+    }
+
+    .btn-glitch {
+        width: 100%; /* Botão ocupa a largura total no mobile para facilitar o clique */
+        text-align: center;
+        padding: 18px 30px;
+    }
+
+    /* Ajuste da Logo para não empurrar o botão da Navbar */
+    .logo {
+        font-size: 1rem;
+    }
+}
