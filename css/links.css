@@ -1,0 +1,111 @@
+.links-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 60px 20px;
+    background: radial-gradient(circle at top, #0c0c0c 0%, #050505 100%);
+}
+
+.links-container {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.links-header {
+    margin-bottom: 40px;
+}
+
+.links-header .profile-wrapper {
+    margin: 0 auto 20px;
+}
+
+.links-header .profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+}
+
+.links-subtitle {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.links-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+.link-card .card-tag {
+    font-size: 0.6rem;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.link-card h3 {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 4px 0;
+}
+
+.link-card p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin: 0;
+}
+
+.card-arrow {
+    color: var(--accent);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+/* Efeitos de Hover */
+.link-card:hover {
+    transform: scale(1.02);
+    border-color: var(--accent);
+    background: rgba(157, 80, 187, 0.05);
+}
+
+.link-card:hover .card-arrow {
+    transform: translateX(5px);
+}
+
+/* Estilos Especiais Reutilizados */
+.link-card.premium {
+    border-color: rgba(157, 80, 187, 0.4);
+    background: linear-gradient(145deg, rgba(157, 80, 187, 0.1), transparent);
+}
+
+.link-card.highlight {
+    border-left: 4px solid var(--accent);
+}
+
+.links-footer {
+    margin-top: 60px;
+    font-size: 0.7rem;
+    color: #444;
+}
