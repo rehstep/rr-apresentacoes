@@ -1,7 +1,3 @@
-Melhorias:
-* Retomar configurações de sugestões do VS Code
-* Otimizar arquivos de vídeos (escolher os 20 melhores) para diminuir tamanho. Saber qual é o melhor.
-
 A fazer:
 1. Página de links (para colocar em link da bio): com cards para o site RRapresentacoes, para página de chat com IA aprender biologia, para Instagram e para WhatsApp.
 2. Página de IA (integrando com Google sobre biologia).
